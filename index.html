@@ -327,10 +327,20 @@
   .proj-link:hover{border-color:var(--teal);}
 
   /* ---------- SKILLS ---------- */
-  .skills-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:28px 40px;}
-  .skill-group h4{font-family:var(--mono); font-size:12px; color:var(--slate); text-transform:uppercase; letter-spacing:0.06em; margin:0 0 12px;}
-  .skill-chips{display:flex; flex-wrap:wrap; gap:8px;}
+  .skills-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px 50px;}
+  .skill-group h4{font-family:var(--teal); font-size:12px; color:var(--slate); text-transform:uppercase; letter-spacing:0.06em; margin:0 0 12px;}
+  .skill-chips{display:flex; flex-wrap:wrap; gap:8px; padding: 6px 12px}
   .skill-chips .chip{background:var(--teal-dim); color:var(--ink); border:1px solid transparent;}
+  .chip{
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        color .2s ease;
+}
+
+.chip:hover{
+    transform:translateY(-2px);
+}
 
   /* ---------- CONTACT ---------- */
 .contact-section{
@@ -705,17 +715,17 @@
         </div>
         <div class="skills-grid">
           <div class="skill-group">
-            <h4>Languages</h4>
+            <h4>Programming Languages</h4>
             <div class="skill-chips">
               <span class="chip">Java</span><span class="chip">Python</span><span class="chip">Kotlin</span>
               <span class="chip">C++</span><span class="chip">JavaScript</span><span class="chip">Swift</span>
-              <span class="chip">SQL</span><span class="chip">HTML/CSS</span>
+              <span class="chip">HTML/CSS</span>
             </div>
           </div>
           <div class="skill-group">
-            <h4>Frameworks &amp; Data</h4>
+            <h4>Technologies &amp; Platforms</h4>
             <div class="skill-chips">
-              <span class="chip">Django</span><span class="chip">REST APIs</span><span class="chip">Supabase</span>
+              <span class="chip">SQL</span><span class="chip">Django</span><span class="chip">REST APIs</span><span class="chip">Supabase</span>
               <span class="chip">Microsoft Azure</span><span class="chip">PostgreSQL</span><span class="chip">SQL Server</span>
               <span class="chip">SQLite</span><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">Matplotlib</span>
             </div>
@@ -728,7 +738,7 @@
             </div>
           </div>
           <div class="skill-group">
-            <h4>Spoken Languages</h4>
+            <h4>Languages</h4>
             <div class="skill-chips">
               <span class="chip">English</span><span class="chip">Nepali</span><span class="chip">Hindi</span><span class="chip">Armenian</span>
             </div>
