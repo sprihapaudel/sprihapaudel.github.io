@@ -420,13 +420,14 @@
     <div class="topbar-inner">
       <div class="brand">Spriha Paudel</div>
 
-      <select class="mobile-tab-select" id="mobile-tab-select" onchange="switchTab(this.value)">
+      <select class="mobile-tab-select" id="mobile-tab-select" onchange="handleNavSelect(this.value)">
         <option value="home">home.tsx</option>
         <option value="about">about.md</option>
         <option value="experience">experience.log</option>
         <option value="projects">projects.json</option>
         <option value="skills">skills.yml</option>
         <option value="contact">contact.sh</option>
+        <option value="resume">resume.pdf ↗</option>
       </select>
 
       <nav class="navlinks" id="navlinks">
@@ -436,6 +437,7 @@
         <a href="#projects" data-tab="projects">projects<span class="ext">.json</span></a>
         <a href="#skills" data-tab="skills">skills<span class="ext">.yml</span></a>
         <a href="#contact" data-tab="contact">contact<span class="ext">.sh</span></a>
+        <a href="PASTE_YOUR_GOOGLE_DRIVE_RESUME_LINK_HERE" target="_blank" rel="noopener" class="resume-link">resume<span class="ext">.pdf ↗</span></a>
       </nav>
 
       <div class="right-controls">
@@ -746,6 +748,7 @@
             <a href="mailto:sprihapaudel@gmail.com">sprihapaudel@gmail.com</a>
             <a href="https://www.linkedin.com/in/spriha-paudel/" target="_blank" rel="noopener">LinkedIn ↗</a>
             <a href="https://github.com/sprihapaudel" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="PASTE_YOUR_GOOGLE_DRIVE_RESUME_LINK_HERE" target="_blank" rel="noopener">Resume ↗</a>
           </div>
         </div>
       </section>
@@ -784,12 +787,23 @@
     if(updateHash !== false){ history.replaceState(null, '', '#' + tabName); }
   }
 
-  document.querySelectorAll('#navlinks a').forEach(a=>{
+  document.querySelectorAll('#navlinks a[data-tab]').forEach(a=>{
     a.addEventListener('click', function(e){
       e.preventDefault();
       switchTab(this.dataset.tab);
     });
   });
+
+  const RESUME_URL = "PASTE_YOUR_GOOGLE_DRIVE_RESUME_LINK_HERE";
+  function handleNavSelect(value){
+    if(value === 'resume'){
+      window.open(RESUME_URL, '_blank', 'noopener');
+      document.getElementById('mobile-tab-select').value =
+        document.querySelector('#navlinks a.active')?.dataset.tab || 'home';
+      return;
+    }
+    switchTab(value);
+  }
 
   (function(){
     const validTabs = ['home','about','experience','projects','skills','contact'];
