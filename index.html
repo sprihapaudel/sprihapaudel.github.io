@@ -168,6 +168,20 @@
     font-family:var(--display); font-weight:500; font-size:19px;
     color:var(--ink); margin:0 0 14px;
   }
+  .cursor{
+    color:var(--teal);
+    font-weight:500;
+}
+
+.cursor.blink{
+    animation:blink 1s steps(1) infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
   .eyebrow{
     font-family:var(--mono); font-size:12.5px; letter-spacing:0.08em;
     color:var(--teal); text-transform:uppercase; margin-bottom:18px;
@@ -407,7 +421,9 @@
       <section class="hero">
         <div class="hero-top">
           <div class="hero-copy">
-            <p class="greeting">Hi, I'm Spriha.</p>
+            <h2 class="greeting">
+    <span id="typed-text"></span>
+    <span class="cursor">_</span></h2>
             <div class="eyebrow">Solutions Engineer <span>·</span> Technical Account Manager <span>·</span> Customer Success</div>
             <h1 class="headline">I translate <span class="accent">systems</span> into outcomes people can act on.</h1>
             <p class="hero-sub">
@@ -736,6 +752,35 @@
     const hash = location.hash.replace('#','');
     switchTab(validTabs.includes(hash) ? hash : 'home', false);
   })();
+  const greetingText = "Hi, I'm Spriha.";
+
+const typedText = document.getElementById("typed-text");
+const cursor = document.querySelector(".cursor");
+
+let i = 0;
+
+function typeGreeting() {
+
+  if (!typedText) return;
+
+  if (i < greetingText.length) {
+
+    typedText.textContent += greetingText.charAt(i);
+    i++;
+
+    setTimeout(typeGreeting, 75);
+
+  } else {
+
+    setTimeout(() => {
+      cursor.classList.add("blink");
+    }, 500);
+
+  }
+
+}
+
+window.addEventListener("DOMContentLoaded", typeGreeting);
 </script>
 </body>
 </html>
